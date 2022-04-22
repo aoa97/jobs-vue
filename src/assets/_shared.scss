@@ -1,0 +1,107 @@
+// Colors
+$blue: #1e86ff;
+$d-blue: #334680;
+$gray: #b9bdcf;
+$gray-2: #b7bcce;
+$white: #ffffff;
+$body-color: #f6f7fb;
+$brand-color: #282538;
+
+// Fonts
+$roboto: "Roboto", sans-serif;
+$montserrat: "Montserrat", sans-serif;
+$poppins: "Poppins", sans-serif;
+
+// Pixels
+$radius: 0.4rem;
+
+// Mixins
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin spaceBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin card {
+  display: flex;
+  align-items: center;
+  background: $white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: $radius;
+}
+@mixin screen($mw) {
+  @media only screen and (max-width: $mw) {
+    @content;
+  }
+}
+
+// Reusable Styles & Utility Classes
+input[type="checkbox"] {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: 1.2rem;
+  border-radius: calc($radius / 2);
+
+  &:not(:checked) {
+    appearance: none;
+    border: 1px solid $gray;
+  }
+  &:checked {
+    width: 1.8rem;
+    height: 1.8rem;
+    accent-color: $blue;
+  }
+}
+
+input[type="radio"] {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: 1.2rem;
+  accent-color: $blue;
+
+  &:not(:checked) {
+    appearance: none;
+    border: 1px solid $gray;
+    border-radius: 50%;
+  }
+}
+
+.heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: $poppins;
+  text-transform: uppercase;
+  color: $gray;
+}
+
+.ico {
+  font-size: 1.5rem;
+  margin-right: 0.95rem;
+  color: $gray-2;
+}
+
+.tag {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.6rem;
+  border: 0.1rem solid $d-blue;
+  border-radius: $radius;
+  font-size: 1.2rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+
+  .text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $gray-2;
+  }
+}

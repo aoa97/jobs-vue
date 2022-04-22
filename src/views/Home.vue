@@ -1,0 +1,41 @@
+<template>
+  <!-- Brand -->
+  <h1>Github <span>Jobs</span></h1>
+
+  <!-- Header With Form -->
+  <Header />
+
+  <!-- Content -->
+  <div class="content">
+    <FilterSidebar />
+    <JobList />
+  </div>
+</template>
+
+<script setup>
+import Header from "../components/Home/Header.vue";
+import FilterSidebar from "../components/Home/FilterSidebar.vue";
+import JobList from "../components/Home/JobList.vue";
+</script>
+
+<style scoped lang="scss">
+h1 {
+  font-weight: 700;
+  font-size: 2.4rem;
+  font-family: $poppins;
+  color: $brand-color;
+
+  span {
+    font-weight: 300;
+  }
+}
+
+div.content {
+  display: flex;
+  column-gap: 3.2rem;
+
+  @include screen(546px) {
+    flex-direction: column;
+  }
+}
+</style>
