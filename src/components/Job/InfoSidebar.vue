@@ -10,13 +10,20 @@
     <h3 class="heading">How To Apply</h3>
     <p>
       Please email a copy of your resume and online portfolio to
-      <a href="mailto:wes@kasisto.com">wes@kasisto.com</a> &amp; CC
-      <a href="mailto:eric@kasisto.com">eric@kasisto.com</a>
+      <a href="mailto:hr@kasisto.com">hr@{{ company }}.com</a> 
     </p>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { defineProps, computed } from "vue";
+
+const props = defineProps(["job"]);
+
+const company = computed(() => {
+  return props.job.company_name.toLowerCase();
+});
+</script>
 
 <style scoped lang="scss">
 .container {

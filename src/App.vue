@@ -18,6 +18,11 @@ a {
   color: inherit;
 }
 
+li {
+  list-style-type: '- ';
+  list-style-position: inside;
+}
+
 html {
   font-size: 10px;
   color: $d-blue;
