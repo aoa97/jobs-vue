@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
 import JobListItem from "./JobListItem.vue";
 import Pagination from "./Pagination.vue";
 
@@ -20,6 +19,6 @@ const props = defineProps(['jobs'])
 
 <style scoped lang="scss">
 .container {
-  flex: 1;
+  flex: 2;
 }
 </style>

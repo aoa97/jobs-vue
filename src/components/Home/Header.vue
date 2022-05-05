@@ -3,14 +3,25 @@
     <form>
       <label>
         <span class="material-icons">work_outline</span>
-        <input placeholder="Title, companies, expertise or benefits" />
+        <input
+          v-model="search"
+          placeholder="Title, companies, expertise or benefits"
+        />
       </label>
-      <button>Search</button>
     </form>
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, watch } from "vue";
+import { filters, setFilters } from "@/store";
+
+const search = ref(null);
+
+watch(search, (newSearch) => {
+  setFilters({ ...filters.value, search: newSearch });
+});
+</script>
 
 <style scoped lang="scss">
 header {

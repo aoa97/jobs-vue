@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Back to Search Link -->
     <router-link class="back" to="/">
-      <span class="material-icons"> trending_flat </span>
+      <span class="material-icons">trending_flat</span>
       Back to search
     </router-link>
 
@@ -10,18 +10,18 @@
     <h3 class="heading">How To Apply</h3>
     <p>
       Please email a copy of your resume and online portfolio to
-      <a href="mailto:hr@kasisto.com">hr@{{ company }}.com</a> 
+      <a href="mailto:hr@kasisto.com">hr@{{ company }}.com</a>
     </p>
   </div>
 </template>
 
 <script setup>
-import { defineProps, computed } from "vue";
+import { computed } from "vue";
 
 const props = defineProps(["job"]);
 
 const company = computed(() => {
-  return props.job.company_name.toLowerCase();
+  return props.job?.company_name?.toLowerCase();
 });
 </script>
 

@@ -9,7 +9,7 @@
 
         <div class="tags">
           <span class="tag" v-text="job.category" />
-          <span class="tag" v-text="jobType" />
+          <span class="tag" v-text="jobType" v-show="jobType.length" />
         </div>
       </div>
 
@@ -38,13 +38,13 @@
 <script setup>
 import moment from "moment";
 import _ from "lodash";
-import { defineProps, computed } from "vue";
+import { computed } from "vue";
 
 const props = defineProps(["job"]);
 
 const createdAt = computed(() => {
   const date = props.job.publication_date;
-  return moment(date).startOf('day').fromNow();
+  return moment(date).startOf("day").fromNow();
 });
 
 const jobType = computed(() => {
@@ -65,7 +65,7 @@ const location = computed(() => {
   @include spaceBetween;
   align-items: stretch;
   margin-bottom: 3.2rem;
-  padding: 1.2rem;
+  padding: 1.8rem 1.5rem;
   column-gap: 1.6rem;
 
   @include screen(376px) {
@@ -87,9 +87,9 @@ const location = computed(() => {
     justify-content: space-between;
     align-items: center;
 
-    @include screen(1095px) {
+    @include screen(862px) {
       flex-direction: column;
-      row-gap: 1.5rem;
+      row-gap: 2rem;
     }
 
     .data {
@@ -107,16 +107,17 @@ const location = computed(() => {
       h2 {
         font-size: 1.8rem;
         font-weight: 400;
-        margin-block: 0.8rem 1.2rem;
+        margin-block: 1.4rem 1.8rem;
       }
     }
 
     .meta {
+      flex-basis: 50%;
       align-self: flex-end;
       display: flex;
+      justify-content: flex-end;
       column-gap: 2.85rem;
       row-gap: 0.5rem;
-      flex-wrap: wrap;
 
       @include screen(405px) {
         width: 100%;

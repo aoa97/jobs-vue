@@ -1,76 +1,83 @@
 <template>
   <div class="sidebar">
-    <!-- Checkbox -->
-    <label class="time"><input type="checkbox" />Full time</label>
+    <!-- Job Type -->
+    <div class="filter-item">
+      <h3 class="heading">Job Type</h3>
+      <label
+        class="time"
+        :key="type"
+        v-for="type in jobTypes"
+        v-show="type.length > 0"
+      >
+        <input type="checkbox" :value="type" v-model="state.job_type" />
+        {{ _.startCase(type) }}
+      </label>
+    </div>
 
-    <div class="location">
-      <!-- Heading -->
-      <h3 class="heading">Location</h3>
-
-      <!-- Search Bar -->
-      <form>
-        <span class="ico material-icons">public</span>
-        <input placeholder="Title, companies, expertise or benefits" />
-      </form>
-
-      <!-- Radio Buttons -->
-      <div class="cities">
-        <label><input type="radio" />London</label>
-        <label><input type="radio" />Amsterdam</label>
-        <label><input type="radio" />New York</label>
-        <label><input type="radio" />Berlin</label>
-      </div>
+    <!-- Category -->
+    <div class="filter-item">
+      <h3 class="heading">Job Category</h3>
+      <label
+        class="time"
+        :key="cat"
+        v-for="cat in jobCats"
+        v-show="cat.length > 0"
+      >
+        <input type="checkbox" :value="cat" v-model="state.category" />
+        {{ cat }}
+      </label>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import _ from "lodash";
+import { reactive, watch } from "vue";
+import { filters, setFilters } from "@/store";
+import { jobTypes, jobCats } from "@/utils";
+
+const state = reactive({
+  job_type: [],
+  category: [],
+});
+
+watch(() => ({ ...state }), (newFilters) => {
+    setFilters({...filters.value, ...newFilters });
+  }
+);
+</script>
 
 <style scoped lang="scss">
 .sidebar {
-  flex-basis: 35%;
+  flex-basis: 25%;
+  @include card;
+  padding: 1.8rem;
+  height: fit-content;
   display: flex;
   flex-direction: column;
 
-  /* Checkbox & Below Radio Buttons Labels */
-  label {
-    display: flex;
-    align-items: center;
-    column-gap: 1.2rem;
-    font-size: 1.4rem;
-    font-weight: 500;
-    font-family: $poppins;
-    color: $d-blue;
-  }
+  .filter-item {
+    width: 100%;
+    margin-bottom: 1.5rem;
 
-  /*  Location searcy & countries */
-  .location {
-    margin-block: 3rem 2.45rem;
-
-    /* Search bar */
-    form {
-      @include card;
-      margin-block: 1.4rem 2.45rem;
-      padding: 1.7rem 1.4rem;
-
-      input {
-        flex-basis: 100%;
-        font-size: 1.2rem;
-        background: none;
-        outline: 0;
-        border: 0;
-
-        &::placeholder {
-          color: $gray-2;
-        }
-      }
+    .heading {
+      margin-bottom: 1.4rem;
     }
 
-    /* Radio Buttons */
-    .cities {
+    label {
+      cursor: pointer;
       display: flex;
-      flex-direction: column;
-      row-gap: 1.567rem;
+      align-items: center;
+      column-gap: 1.2rem;
+      font-size: 1.4rem;
+      font-weight: 500;
+      font-family: $poppins;
+      color: $d-blue;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

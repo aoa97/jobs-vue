@@ -12,29 +12,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 a {
   text-decoration: none;
   color: inherit;
 }
-
 li {
-  list-style-type: '- ';
+  list-style-type: "- ";
   list-style-position: inside;
 }
-
 html {
   font-size: 10px;
   color: $d-blue;
 }
-
 body {
   font-size: 1.4rem;
   font-weight: 400;
   font-family: $roboto;
   background: $body-color;
 }
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,15 +37,12 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
   @include screen(1256px) {
     padding-inline: 5rem;
   }
-
   @include screen(1041px) {
     padding-inline: 2rem;
   }
-
   footer {
     flex: 1;
     display: flex;
@@ -60,7 +52,7 @@ body {
     text-align: center;
     font-family: $montserrat;
     font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: 600;
     color: $gray;
   }
 }

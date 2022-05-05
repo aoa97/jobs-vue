@@ -5,7 +5,7 @@
 
       <div>
         <span class="tag" v-text="job.category" />
-        <span class="tag" v-text="jobType" />
+        <span class="tag" v-text="jobType" v-show="jobType.length" />
       </div>
     </div>
 
@@ -36,7 +36,7 @@
 <script setup>
 import moment from "moment";
 import _ from "lodash";
-import { computed, defineProps } from "vue";
+import { computed } from "vue";
 
 const props = defineProps(["job"]);
 
@@ -91,7 +91,6 @@ const jobType = computed(() => {
         display: flex;
         flex-direction: column;
         column-gap: 1rem;
-
 
         h3 {
           font-family: $poppins;
