@@ -1,9 +1,11 @@
 <template>
-  <Loader v-if="totalJobs.length === 0" />
+  <Loader v-if="totalJobs?.length === 0" />
+
+  <h1 v-if="error">{{ error }}</h1>
 
   <div v-else>
     <!-- Brand -->
-    <h1>Github <span>Jobs</span></h1>
+    <h1>Remotive <span>Jobs</span></h1>
 
     <!-- Header With Form -->
     <Header />
@@ -11,7 +13,7 @@
     <!-- Content -->
     <div class="content">
       <FilterSidebar />
-      <JobList :jobs="filteredJobs" />
+      <JobList :jobs="pageJobList" />
     </div>
   </div>
 </template>
@@ -19,7 +21,7 @@
 <script setup>
 import axios from "axios";
 import { reactive } from "vue";
-import { totalJobs, filteredJobs } from "@/store";
+import { totalJobs, pageJobList, error } from "@/store";
 import Header from "../components/Home/Header.vue";
 import FilterSidebar from "../components/Home/FilterSidebar.vue";
 import JobList from "../components/Home/JobList.vue";
@@ -42,7 +44,7 @@ div.content {
   display: flex;
   gap: 3.2rem;
 
-  @include screen(598px) {
+  @include screen(696px) {
     flex-direction: column;
   }
 }

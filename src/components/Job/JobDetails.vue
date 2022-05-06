@@ -60,6 +60,7 @@ const jobType = computed(() => {
   .job-title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     column-gap: 1.7rem;
     margin-bottom: 1rem;
 
@@ -67,6 +68,14 @@ const jobType = computed(() => {
       font-family: $roboto;
       font-size: 2.4rem;
       font-weight: 700;
+    }
+
+    @include screen(891px) {
+      align-items: flex-start;
+      flex-direction: column;
+      row-gap: 2rem;
+      margin-bottom: 2rem;
+      margin-top: 3.6rem;
     }
   }
 

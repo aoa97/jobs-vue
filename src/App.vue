@@ -1,7 +1,5 @@
 <template>
   <router-view />
-
-  <footer>created by @aoa97 - devChallenges.io</footer>
 </template>
 
 <script setup></script>
@@ -23,6 +21,7 @@ li {
 html {
   font-size: 10px;
   color: $d-blue;
+  scroll-behavior: smooth;
 }
 body {
   font-size: 1.4rem;
@@ -42,18 +41,6 @@ body {
   }
   @include screen(1041px) {
     padding-inline: 2rem;
-  }
-  footer {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-top: 3rem;
-    text-align: center;
-    font-family: $montserrat;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: $gray;
   }
 }
 </style>

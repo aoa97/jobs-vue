@@ -1,18 +1,26 @@
 <template>
-  <router-link class="container" :to="{ name: 'job', params: { id: job.id } }">
+  <router-link
+    class="container"
+    :to="{ name: 'job', params: { id: job.id, title: job.title } }"
+  >
+    <!-- Left Side [Company Logo] -->
     <img :src="job.company_logo" alt="Compay Logo" />
 
+    <!-- Right Side -->
     <div class="right">
       <div class="data">
+        <!-- Company Name & Job Title -->
         <h5 v-text="job.company_name" />
         <h2 v-text="job.title" />
 
+        <!-- Job Type & Category Tags -->
         <div class="tags">
           <span class="tag" v-text="job.category" />
           <span class="tag" v-text="jobType" v-show="jobType.length" />
         </div>
       </div>
 
+      <!-- Job Location & Posting Time -->
       <div class="meta">
         <div
           class="meta-item"

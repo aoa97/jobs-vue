@@ -1,5 +1,5 @@
 <template>
-  <Loader v-if="!job" />
+  <Loader v-if="_.isEmpty(job)" />
 
   <div class="container" v-else>
     <InfoSidebar :job="job" />
@@ -8,6 +8,7 @@
 </template>
 
 <script setup>
+import _ from 'lodash'
 import { useRoute } from "vue-router";
 import { useFetchJob } from "@/composables";
 import InfoSidebar from "../components/Job/InfoSidebar.vue";
@@ -16,6 +17,7 @@ import Loader from "../components/Loader.vue";
 
 const route = useRoute();
 const { job, error } = useFetchJob(route.params.id);
+
 </script>
 
 <style scoped lang="scss">
@@ -24,7 +26,7 @@ const { job, error } = useFetchJob(route.params.id);
   justify-content: space-between;
   column-gap: 3.2rem;
 
-  @include screen(546px) {
+  @include screen(696px) {
     flex-direction: column;
   }
 }

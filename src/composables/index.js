@@ -1,19 +1,29 @@
 import axios from "axios";
-import { reactive, toRefs } from "vue";
+import { ref } from "vue";
 
-const url = "https://remotive.com/api/remote-jobs?limit=300";
+const url = "https://remotive.com/api/remote-jobs?limit=50";
 
-// Unfortunatelly remotive Api doesn't provide an end-point for fetching a job by id directly :(
-export const useFetchJob = (id) => {
-  const state = reactive({
-    job: null,
-    error: null,
-  });
+export const useFetchJobs = () => {
+  const totalJobs = ref([]);
+  const error = ref(null);
 
   axios
     .get(url)
-    .then((res) => (state.job = res.data.jobs.find((j) => j.id === +id)))
-    .catch((e) => (state.error = e));
+    .then((res) => (totalJobs.value = res.data.jobs))
+    .catch((e) => (error.value = e.toJSON().message));
 
-  return toRefs(state);
+  return { totalJobs, error };
+};
+
+// Remotive Api doesn't provide an end-point for fetching a job by id directly :(
+export const useFetchJob = (id) => {
+  const job = ref({});
+  const error = ref(null);
+
+  axios
+    .get(url)
+    .then((res) => (job.value = res.data.jobs.find((j) => j.id === +id)))
+    .catch((e) => (error.value = e.toJSON().message));
+
+  return { job, error };
 };

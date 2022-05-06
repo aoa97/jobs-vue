@@ -10,7 +10,7 @@
     <h3 class="heading">How To Apply</h3>
     <p>
       Please email a copy of your resume and online portfolio to
-      <a href="mailto:hr@kasisto.com">hr@{{ company }}.com</a>
+      <a :href="mailto">hr@{{ company }}.com</a>
     </p>
   </div>
 </template>
@@ -23,11 +23,15 @@ const props = defineProps(["job"]);
 const company = computed(() => {
   return props.job?.company_name?.toLowerCase();
 });
+
+const mailto = computed(() => {
+  return `mailto:hr@${props.job?.company_name.toLowerCase()}.com`;
+});
 </script>
 
 <style scoped lang="scss">
 .container {
-  flex-basis: 20%;
+  flex-basis: 30%;
   display: flex;
   flex-direction: column;
   height: fit-content;
