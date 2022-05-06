@@ -1,7 +1,5 @@
 <template>
-  <Loader v-if="totalJobs?.length === 0" />
-
-  <h1 v-if="error">{{ error }}</h1>
+  <Loader v-if="totalJobs.length === 0" />
 
   <div v-else>
     <!-- Brand -->
@@ -21,7 +19,7 @@
 <script setup>
 import axios from "axios";
 import { reactive } from "vue";
-import { totalJobs, pageJobList, error } from "@/store";
+import { totalJobs, pageJobList } from "@/store";
 import Header from "../components/Home/Header.vue";
 import FilterSidebar from "../components/Home/FilterSidebar.vue";
 import JobList from "../components/Home/JobList.vue";

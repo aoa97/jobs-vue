@@ -48,6 +48,7 @@ const setFilters = (val) => {
 
 const setCurrentPage = (val) => {
   currentPage.value = val;
+  window.scrollTo(0, 0)
 };
 
 export {

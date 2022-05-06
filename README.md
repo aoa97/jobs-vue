@@ -2,7 +2,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://todo-vue-aoa97.netlify.app/">
+    <a href="https://jobs-vue.vercel.app/">
       Demo
     </a>
   </h3>
